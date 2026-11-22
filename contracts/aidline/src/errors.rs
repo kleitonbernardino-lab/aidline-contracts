@@ -74,4 +74,7 @@ pub enum Error {
 
     // Verifier reassignment
     MaxVerifierReassignmentsExceeded = 40,
+
+    // Issue #143: Bounded proof URI
+    InvalidProofUri = 41,
 }
