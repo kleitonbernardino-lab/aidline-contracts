@@ -74,4 +74,7 @@ pub enum Error {
 
     // Verifier reassignment
     MaxVerifierReassignmentsExceeded = 40,
+
+    // Issue #144: Bounded metadata URI
+    InvalidMetadataUri = 41,
 }
