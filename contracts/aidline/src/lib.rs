@@ -690,6 +690,9 @@ impl Aidline {
         milestones: Vec<i128>,
         min_donation: i128,
     ) -> Result<u64, Error> {
+        if metadata_uri.is_empty() || metadata_uri.len() > 500 {
+            return Err(Error::InvalidMetadataUri);
+        }
         creator.require_auth();
         storage::bump_instance(&env);
 
