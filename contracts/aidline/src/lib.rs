@@ -71,6 +71,12 @@ impl Aidline {
     /// # Errors
     /// This function does not return errors; panics if storage is unavailable.
     pub fn __constructor(env: Env, admin: Address, token: Address) {
+        if admin == token {
+            panic!("admin and token must be distinct");
+        }
+        if admin == env.current_contract_address() || token == env.current_contract_address() {
+            panic!("admin and token cannot be contract address");
+        }
         storage::set_admin(&env, &admin);
         storage::set_token(&env, &token);
         storage::set_token_allowed(&env, &token, true);
