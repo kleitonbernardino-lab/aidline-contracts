@@ -1430,6 +1430,9 @@ impl Aidline {
         verifier: Address,
         proof_uri: String,
     ) -> Result<i128, Error> {
+        if proof_uri.is_empty() || proof_uri.len() > 500 {
+            return Err(Error::InvalidProofUri);
+        }
         if proof_uri.len() > MAX_URI_LENGTH {
             return Err(Error::UriTooLong);
         }
