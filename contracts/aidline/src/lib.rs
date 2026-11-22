@@ -440,7 +440,7 @@ impl Aidline {
         }
 
         let delay = storage::bond_withdraw_delay(&env);
-        let elapsed = env.ledger().timestamp() - bond.deregistered_at;
+        let elapsed = env.ledger().timestamp().saturating_sub(bond.deregistered_at);
         if elapsed < delay {
             return Err(Error::WithdrawDelayNotMet);
         }
