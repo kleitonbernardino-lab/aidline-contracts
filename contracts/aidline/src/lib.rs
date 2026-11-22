@@ -917,7 +917,8 @@ impl Aidline {
         if storage::is_paused(&env) {
             return Err(Error::Paused);
         }
-        if amount <= 0 {
+        const MIN_GLOBAL_DONATION: i128 = 10_000;
+        if amount < MIN_GLOBAL_DONATION {
             return Err(Error::InvalidAmount);
         }
 
